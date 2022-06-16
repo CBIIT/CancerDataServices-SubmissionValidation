@@ -88,7 +88,6 @@ def get_samples(xlsx_file):
 
     """just start with 1 subfile for now"""
     my_sample = Sample(sample_data[0])
-    print(my_sample)
     return my_sample
 
 
@@ -105,7 +104,6 @@ def get_participants(xlsx_file):
 
     """just start with 1 subfile for now"""
     my_participant = Participant(participant_data[0])
-    print(my_participant)
 
     return my_participant
 
@@ -122,7 +120,6 @@ def get_f_p_s_mapping(xlsx_file):
 
     """just start with 1 subfile for now"""
     my_fps_mapping = F_p_s_mapping(fps_mapping_data[0])
-    print(my_fps_mapping)
     return my_fps_mapping
 
 
@@ -139,7 +136,6 @@ def get_genomic_infos(xlsx_file):
 
     """just start with 1 subfile for now"""
     my_gi = Genomic_info(genomic_info_data[0])
-    print(my_gi)
     return my_gi
 
 

@@ -1,18 +1,12 @@
 """
-Read and parse submitted xlsx files for Project NO
+Read and parse submitted xlsx files for CDS Metadata Manifest (high level entry point)
 uses openpyxl
 """
-import sys
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 from openpyxl import load_workbook                             # noqa: E402
 from cds_template_tool.helpers.logger import get_logger              # noqa: E402
 from cds_template_tool.helpers.xlsx_parser import get_subfiles, get_participants, get_samples, get_f_p_s_mapping, get_genomic_infos, get_thingy
-from cds_template_tool.models.participant import Participant               # noqa: E402
-from cds_template_tool.models.subfile import Subfile                         # noqa: E402
-from cds_template_tool.models.study import Study                         # noqa: E402
-from cds_template_tool.models.sample import Sample                   # noqa: E402
-from cds_template_tool.models.errors import XlsxWorksheetError       # noqa: E402
 
 
 logger = get_logger(__name__)
@@ -36,7 +30,6 @@ def read_metadata_manifest(filename):
     genomic_infos = get_genomic_infos(filename)
 
     return 'hello world'
-
 
 
 

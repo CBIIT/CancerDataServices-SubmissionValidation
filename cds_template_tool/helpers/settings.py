@@ -17,13 +17,11 @@ class Settings:
 
     JSON_SCHEMA = ""  # file for validating generated JSON
 
-    RUN_LEVEL = ""
-
     @classmethod
-    def setup(cls, config_file, json_schema_file, run_level):
+    def setup(cls, config_file, json_schema_file, tier):
         cls.config_file = config_file
         cls.JSON_SCHEMA = json_schema_file
-        cls.RUN_LEVEL = run_level
+        cls.TIER = tier
 
         # get parameters from config file
         # note - had to make sure to strip double quotes from beginning and
@@ -34,5 +32,3 @@ class Settings:
         # get logging level
         Settings.LOGGING_LEVEL = config.get("logging", "level").strip('"')
 
-        # get running level
-        Settings.RUN_LEVEL = config.get("run", "level").strip('"')

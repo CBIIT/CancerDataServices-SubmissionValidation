@@ -32,10 +32,18 @@ def cli():
         default="etc/config.ini",
     )
     parser.add_argument(
-        "-r",
-        choices=["DRY", "PROD"],
-        help="which run level",
-        default="DRY",
+        "--schema",
+        dest="schema",
+        metavar="aurora_json_schema.json",
+        type=str,
+        help="schema file for validating json files",
+        default="etc/aurora_json_schema.json",
+    )
+    parser.add_argument(
+        "-t",
+        choices=["UAT", "DEV", "PRODMOCK", "PROD"],
+        help="which tier to use and which s3 bucket for sync",
+        default="DEV",
     )
 
     try:
@@ -44,7 +52,7 @@ def cli():
         parser.error(str(msg))
 
     # needed to properly set default logging level
-    Settings.setup(args.c, args.r)  # noqa
+    Settings.setup(args.c, args.schema, args.t)  # noqa
 
     logger = get_logger(__name__)
     logger.info("Starting cds_template_tool.py CLI with the arguments")
