@@ -1,0 +1,1542 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aurora_json_schema.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "sample_info",
+    "submitted_variants",
+    "submission_processing",
+    "errors",
+    "warnings",
+    "debug"
+  ],
+  "properties": {
+    "sample_info": {
+      "$id": "#/properties/sample_info",
+      "type": "object",
+      "title": "The Sample_info Schema",
+      "required": [
+        "psn",
+        "lab",
+        "case",
+        "biopsy_id",
+        "biopsy_collection_date",
+        "specimen_type",
+        "assay",
+        "assay_version"
+      ],
+      "properties": {
+        "psn": {
+          "$id": "#/properties/sample_info/properties/psn",
+          "type": "string",
+          "description": "patient number",
+          "examples": [
+            "18049"
+          ]
+        },
+        "lab": {
+          "$id": "#/properties/sample_info/properties/lab",
+          "type": "string",
+          "description": "Submitting lab",
+          "examples": [
+            "CELLNETIX"
+          ]
+        },
+        "case": {
+          "$id": "#/properties/sample_info/properties/case",
+          "type": "string",
+          "description": "Case number"
+        },
+        "biopsy_id": {
+          "$id": "#/properties/sample_info/properties/biopsy_id",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The Biopsy_id Schema",
+          "default": null
+        },
+        "biopsy_collection_date": {
+          "$id": "#/properties/sample_info/properties/biopsy_collection_date",
+          "type": "string",
+          "title": "The Biopsy_collection_date Schema"
+        },
+        "specimen_type": {
+          "$id": "#/properties/sample_info/properties/specimen_type",
+          "type": "string",
+          "enum": [
+            "Tissue",
+            "tissue",
+            "Nucleic Acid from dOL"
+          ],
+          "title": "The Specimen_type Schema"
+        },
+        "assay": {
+          "$id": "#/properties/sample_info/properties/assay",
+          "type": "string",
+          "title": "The Assay Schema",
+          "examples": [
+            "Illumina"
+          ]
+        },
+        "assay_version": {
+          "$id": "#/properties/sample_info/properties/assay_version",
+          "type": "string",
+          "title": "The Assay_version Schema"
+        }
+      }
+    },
+    "submitted_variants": {
+      "$id": "#/properties/submitted_variants",
+      "type": "array",
+      "title": "The Submitted_variants Schema",
+      "items": { 
+       "oneOf": [
+        {
+          "$id": "#/properties/submitted_variants/items/snv",
+          "type": "object",
+          "title": "The SNV Items Schema",
+          "required": [
+            "gene",
+            "variant_type",
+            "protein_np",
+            "protein_change",
+            "cdna_nm",
+            "cdna_hgvs",
+            "genomic_build",
+            "chromosome",
+            "position_start",
+            "ref",
+            "alt",
+            "allele_frequency",
+            "genomic_feature",
+            "oncominevariantclass",
+            "varsap_input",
+            "varsap_output",
+            "genomic_hgvs",
+            "protein_hgvs",
+            "cdna_change"
+          ],
+          "properties": {
+            "gene": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/gene",
+              "type": "string",
+              "title": "The Gene Schema",
+              "examples": [
+                "EGFR"
+              ]
+            },
+            "variant_id": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/variant_id",
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "The Variant_id Schema",
+              "default": "",
+              "examples": [
+                "COSM6240"
+              ]
+            },
+            "variant_type": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/variant_type",
+              "type": "string",
+              "enum": [
+                "SNV",
+                "Snv",
+                "snv",
+                "MNV",
+                "mnv",
+                "Indel",
+                "indel",
+                "INS",
+                "Ins",
+                "ins",
+                "DEL",
+                "Del",
+                "del"
+              ],
+              "title": "The Variant_type Schema",
+              "examples": [
+                "SNV"
+              ]
+            },
+            "protein_np": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/protein_np",
+              "type": "string",
+              "title": "The Protein_np Schema",
+              "default": "",
+              "examples": [
+                "NP_005219.2"
+              ],
+              "pattern": "^NP_([0-9]*).([0-9]*)$"
+            },
+            "protein_change": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/protein_change",
+              "type": "string",
+              "title": "The Protein_change Schema",
+              "examples": [
+                "p.Thr790Met"
+              ],
+              "pattern": "^p.(.*)$"
+            },
+            "cdna_nm": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/cdna_nm",
+              "type": "string",
+              "title": "The Cdna_nm Schema",
+              "examples": [
+                "NM_005228.5"
+              ],
+              "pattern": "^NM_(.*).(.*)$"
+            },
+            "cdna_hgvs": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/cdna_hgvs",
+              "type": "string",
+              "title": "The Cdna_hgvs Schema",
+              "examples": [
+                "NM_005228.5:c.2369C>T"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "genomic_build": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/genomic_build",
+              "type": "string",
+              "title": "The Genomic_build Schema",
+              "enum": [
+                "GRCh37",
+                "GRCh38"
+              ],
+              "default": "GRCh37",
+              "examples": [
+                "GRCh37"
+              ]
+            },
+            "chromosome": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/chromosome",
+              "type": "string",
+              "title": "The Chromosome Schema",
+              "examples": [
+                "7"
+              ],
+              "pattern": "^([0-9XY]*)$"
+            },
+            "position_start": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/position_start",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3000000000,
+              "title": "The Position_start Schema",
+              "examples": [
+                55249071
+              ]
+            },
+            "position_end": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/position_end",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "title": "The Position_end Schema",
+              "examples": [
+                55249071
+              ]
+            },
+            "ref": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/ref",
+              "type": "string",
+              "title": "The Ref Schema",
+              "default": "",
+              "examples": [
+                "C"
+              ]
+            },
+            "alt": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/alt",
+              "type": "string",
+              "title": "The Alt Schema",
+              "default": "",
+              "examples": [
+                "T"
+              ]
+            },
+            "allele_frequency": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/allele_frequency",
+              "type": "number",
+              "minimum": 0,
+              "title": "The Allele_frequency Schema",
+              "default": 0,
+              "examples": [
+                0.166
+              ]
+            },
+            "genomic_feature": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/genomic_feature",
+              "type": "string",
+              "title": "The Genomic_feature Schema",
+              "enum": [
+                "Frameshit",
+                "frameshift",
+                "Missense",
+                "missense",
+                "Nonsense",
+                "nonsense",
+                "Splice-site",
+                "splice site",
+                "splice-site",
+                "UTR-3",
+                "utr-3",
+                "UTR-5",
+                "utr-5",
+                "Promoter",
+                "promoter"
+              ]
+            },
+            "oncominevariantclass": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/oncominevariantclass",
+              "type": "string",
+              "title": "The Oncominevariantclass Schema",
+              "examples": [
+                "Hotspot",
+                "Deleterious",
+                "Missense"
+              ]
+            },
+            "varsap_input": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/varsap_input",
+              "type": "object"
+            },
+            "varsap_output": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/varsap_output",
+              "type": "object",
+              "required": [
+                "input_validation",
+                "validated_data"
+              ],
+              "properties": {
+                "input_validation": {
+                  "$id": "#/properties/submitted_variants/items/snv/properties/varsap_output/properties/input_validation",
+                  "type": "object",
+                  "title": "The Input_validation Schema",
+                  "required": [
+                    "valid",
+                    "note",
+                    "error",
+                    "warning"
+                  ]
+                },
+                "validated_data": {
+                  "$id": "#/properties/submitted_variants/items/snv/properties/varsap_output/properties/validated_data",
+                  "type": "object"
+                }
+              }
+            },
+            "genomic_hgvs": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/genomic_hgvs",
+              "type": "string",
+              "title": "The Genomic_hgvs Schema",
+              "examples": [
+                "NC_000007.13:g.55249071C>T"
+              ]
+            },
+            "protein_hgvs": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/protein_hgvs",
+              "type": "string",
+              "title": "The Protein_hgvs Schema",
+              "examples": [
+                "NP_005219.2:p.Thr790Met"
+              ]
+            },
+            "cdna_change": {
+              "$id": "#/properties/submitted_variants/items/snv/properties/cdna_change",
+              "type": "string",
+              "title": "The Cdna_change Schema",
+              "examples": [
+                "c.2369C>T"
+              ]
+            }
+          }
+        },
+       {
+        "$id": "#/properties/submitted_variants/items/cnv",
+        "type": "object",
+        "title": "The CNV Items Schema",
+        "required": [
+          "gene",
+          "variant_type",
+          "chromosome",
+          "copy_number",
+          "ci_5",
+          "ci_95",
+          "varsap_input",
+          "varsap_output",
+          "oncominevariantclass"
+        ],
+        "properties": {
+          "gene": {
+            "$id": "#/properties/submitted_variants/items/properties/gene/cnv",
+            "type": "string",
+            "title": "The Gene Schema",
+            "default": "",
+            "examples": [
+              "CDK4"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "variant_type": {
+            "$id": "#/properties/submitted_variants/items/cnv/properties/variant_type",
+            "type": "string",
+	    "enum": ["CNV", "Cnv", "cnv"],
+            "title": "The Variant_type Schema"
+          },
+          "chromosome": {
+            "$id": "#/properties/submitted_variants/items/properties/chromosome",
+            "type": "string",
+            "title": "The Chromosome Schema",
+            "default": "",
+            "examples": [
+              "12"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "copy_number": {
+            "$id": "#/properties/submitted_variants/items/properties/copy_number",
+            "type": "number",
+            "title": "The Copy_number Schema",
+            "examples": [
+              16.36
+            ]
+          },
+          "ci_5": {
+            "$id": "#/properties/submitted_variants/items/properties/ci_5",
+            "type": ["string", "null"],
+            "title": "The Ci_5 Schema",
+            "default": "",
+            "examples": [
+              "14.561"
+            ]
+          },
+          "ci_95": {
+            "$id": "#/properties/submitted_variants/items/properties/ci_95",
+            "type": ["string", "null"],
+            "title": "The Ci_95 Schema",
+            "default": "",
+            "examples": [
+              "18.3812"
+            ]
+          },
+          "varsap_input": {
+            "$id": "#/properties/submitted_variants/items/properties/varsap_input",
+            "type": "object",
+            "title": "The Varsap_input Schema",
+            "required": [
+              "var_type",
+              "gene_symbol",
+              "copy_number_value"
+            ],
+            "properties": {
+              "var_type": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/var_type",
+                "type": "string",
+                "title": "The Var_type Schema",
+                "default": "",
+                "examples": [
+                  "cnv"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "gene_symbol": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/gene_symbol",
+                "type": "string",
+                "title": "The Gene_symbol Schema",
+                "default": "",
+                "examples": [
+                  "CDK4"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "copy_number_value": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/copy_number_value",
+                "type": "number",
+                "title": "The Copy_number_value Schema",
+                "default": 0.0,
+                "examples": [
+                  16.36
+                ]
+              }
+            }
+          },
+          "varsap_output": {
+            "$id": "#/properties/submitted_variants/items/properties/varsap_output",
+            "type": "object",
+            "title": "The Varsap_output Schema",
+            "required": [
+              "input_validation",
+              "validated_data"
+            ],
+            "properties": {
+              "input_validation": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation",
+                "type": "object",
+                "title": "The Input_validation Schema",
+                "required": [
+                  "valid",
+                  "note",
+                  "error",
+                  "warning"
+                ],
+                "properties": {
+                  "valid": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/valid",
+                    "type": "array",
+                    "title": "The Valid Schema",
+                    "items": {
+                      "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/valid/items",
+                      "type": "string",
+                      "title": "The Items Schema",
+                      "default": "",
+                      "examples": [
+                        "gene_symbol: CDK4 Gene ID: 1019"
+                      ],
+                      "pattern": "^(.*)$"
+                    }
+                  },
+                  "note": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/note",
+                    "type": "array",
+                    "title": "The Note Schema"
+                  },
+                  "error": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/error",
+                    "type": "array",
+                    "title": "The Error Schema"
+                  },
+                  "warning": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/warning",
+                    "type": "array",
+                    "title": "The Warning Schema"
+                  }
+                }
+              },
+              "validated_data": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data",
+                "type": "object",
+                "title": "The Validated_data Schema",
+                "required": [
+                  "var_type",
+                  "gene",
+                  "copy_number_value",
+                  "submitter"
+                ],
+                "properties": {
+                  "var_type": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/var_type",
+                    "type": "string",
+                    "title": "The Var_type Schema",
+                    "default": "",
+                    "examples": [
+                      "cnv"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "gene": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene",
+                    "type": "object",
+                    "title": "The Gene Schema",
+                    "required": [
+                      "gene_id",
+                      "gene_symbol",
+                      "gene_name",
+                      "gene_aliases"
+                    ],
+                    "properties": {
+                      "gene_id": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene/properties/gene_id",
+                        "type": "integer",
+                        "title": "The Gene_id Schema",
+                        "default": 0,
+                        "examples": [
+                          1019
+                        ]
+                      },
+                      "gene_symbol": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene/properties/gene_symbol",
+                        "type": "string",
+                        "title": "The Gene_symbol Schema",
+                        "default": "",
+                        "examples": [
+                          "CDK4"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "gene_name": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene/properties/gene_name",
+                        "type": "string",
+                        "title": "The Gene_name Schema",
+                        "default": "",
+                        "examples": [
+                          "cyclin dependent kinase 4"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "gene_aliases": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene/properties/gene_aliases",
+                        "type": "array",
+                        "title": "The Gene_aliases Schema",
+                        "items": {
+                          "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene/properties/gene_aliases/items",
+                          "type": "string",
+                          "title": "The Items Schema",
+                          "default": "",
+                          "examples": [
+                            "CMM3",
+                            "PSK-J3"
+                          ],
+                          "pattern": "^(.*)$"
+                        }
+                      }
+                    }
+                  },
+                  "copy_number_value": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/copy_number_value",
+                    "type": "number",
+                    "title": "The Copy_number_value Schema",
+                    "default": 0.0,
+                    "examples": [
+                      16.36
+                    ]
+                  },
+                  "submitter": {
+                    "$id": "#/properties/submitted_variants/items/cnv/properties/varsap_output/properties/validated_data/properties/submitter",
+                    "type": "null",
+                    "title": "The Submitter Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "oncominevariantclass": {
+            "$id": "#/properties/submitted_variants/items/cnv/properties/oncominevariantclass",
+            "type": "string",
+            "title": "The Oncominevariantclass Schema",
+            "default": "",
+            "examples": [
+              "amplification"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+       },
+       {
+ 	"$id": "#/properties/submitted_variants/items/fusion",
+        "type": "object",
+        "title": "The Items Fusion Schema",
+        "required": [
+          "variant_type",
+          "data_type",
+          "5_gene",
+          "5_gene_nm",
+          "5_chromosome",
+          "5_exon",
+          "5_breakpoint",
+          "3_gene",
+          "3_gene_nm",
+          "3_chromosome",
+          "3_exon",
+          "3_breakpoint",
+          "read_depth",
+          "discordant_reads",
+          "annotation",
+          "varsap_input",
+          "varsap_output"
+        ],
+        "properties": {
+          "variant_id": {
+            "$id": "#/properties/submitted_variants/items/fusion/properties/variant_id",
+            "type": "string",
+            "title": "The Variant_id Schema",
+            "default": "",
+            "examples": [
+              "A2M-ALK.A22A19"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "variant_type": {
+            "$id": "#/properties/submitted_variants/items/fusion/properties/variant_type",
+            "type": "string",
+	    "enum":["FUSION", "Fusion", "fusion"]
+          },
+          "data_type": {
+            "$id": "#/properties/submitted_variants/items/properties/data_type",
+            "type": "string",
+	    "enum": ["DNA", "Dna", "dna", "RNA", "Rna", "rna"],
+	    "default": "RNA"
+          },
+          "genomic_build": {
+            "$id": "#/properties/submitted_variants/items/fusion/properties/genomic_build",
+            "type": ["string", "null"]
+          },
+          "5_gene": {
+            "$id": "#/properties/submitted_variants/items/properties/5_gene",
+            "type": "string",
+            "title": "The 5_gene Schema",
+            "examples": [
+              "A2M"
+            ]
+          },
+          "5_gene_nm": {
+            "$id": "#/properties/submitted_variants/items/properties/5_gene_nm",
+            "type": "string",
+            "title": "The 5_gene_nm Schema",
+            "examples": [
+              "NM_000014.5"
+            ],
+	    "pattern": "^N(.*)$"
+          },
+          "5_chromosome": {
+            "$id": "#/properties/submitted_variants/items/properties/5_chromosome",
+            "type": "string",
+            "title": "The 5_chromosome Schema",
+            "default": "",
+            "examples": [
+              "12"
+            ],
+            "pattern": "^([0-9XY]*)$"
+          },
+          "5_exon": {
+            "$id": "#/properties/submitted_variants/items/properties/5_exon",
+            "type": "string",
+            "title": "The 5_exon Schema",
+            "examples": [
+              "22"
+            ],
+            "pattern": "^([0-9]*)$"
+          },
+          "5_breakpoint": {
+            "$id": "#/properties/submitted_variants/items/properties/5_breakpoint",
+            "type": "integer",
+	    "minimum": 1,
+            "title": "The 5_breakpoint Schema",
+            "default": 1,
+            "examples": [
+              9241790
+            ]
+          },
+          "3_gene": {
+            "$id": "#/properties/submitted_variants/items/properties/3_gene",
+            "type": "string",
+            "title": "The 3_gene Schema",
+            "examples": [
+              "ALK"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "3_gene_nm": {
+            "$id": "#/properties/submitted_variants/items/properties/3_gene_nm",
+            "type": "string",
+            "title": "The 3_gene_nm Schema",
+            "default": "",
+            "examples": [
+              "NM_004304.5"
+            ],
+            "pattern": "^N(.*)$"
+          },
+          "3_chromosome": {
+            "$id": "#/properties/submitted_variants/items/properties/3_chromosome",
+            "type": "string",
+            "title": "The 3_chromosome Schema",
+            "default": "",
+            "examples": [
+              "2"
+            ],
+            "pattern": "^([0-9XY]*)$"
+          },
+          "3_exon": {
+            "$id": "#/properties/submitted_variants/items/properties/3_exon",
+            "type": "string",
+            "title": "The 3_exon Schema",
+            "default": "",
+            "examples": [
+              "19"
+            ],
+            "pattern": "^([0-9]*)$"
+          },
+          "3_breakpoint": {
+            "$id": "#/properties/submitted_variants/items/properties/3_breakpoint",
+            "type": "integer",
+	    "minimum": 0,
+            "title": "The 3_breakpoint Schema",
+            "default": 0,
+            "examples": [
+              29448320
+            ]
+          },
+          "driver_gene": {
+            "$id": "#/properties/submitted_variants/items/properties/driver_gene",
+            "type": ["string", "null"],
+            "title": "The Driver_gene Schema",
+            "default": "",
+            "examples": [
+              "A2M"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "read_depth": {
+            "$id": "#/properties/submitted_variants/items/properties/read_depth",
+            "type": "integer",
+	    "minimum": 0,
+            "title": "The Read_depth Schema",
+            "default": 0,
+            "examples": [
+              12000
+            ]
+          },
+          "discordant_reads": {
+            "$id": "#/properties/submitted_variants/items/properties/discordant_reads",
+            "type": "integer",
+	    "minimum": 0,
+            "title": "The Discordant_reads Schema",
+            "default": 0,
+            "examples": [
+              29448320
+            ]
+          },
+          "annotation": {
+            "$id": "#/properties/submitted_variants/items/properties/annotation",
+            "type": "null",
+            "title": "The Annotation Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "varsap_input": {
+            "$id": "#/properties/submitted_variants/items/properties/varsap_input",
+            "type": "object",
+            "title": "The Varsap_input Schema",
+            "required": [
+              "var_type",
+              "breakpoint_fp_dna_start",
+              "breakpoint_tp_dna_start",
+              "chromosome_fp",
+              "chromosome_tp",
+              "gene_symbol_fp",
+              "gene_symbol_tp",
+              "transcript_fp",
+              "transcript_tp",
+              "genomic_build"
+            ],
+            "properties": {
+              "var_type": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/var_type",
+                "type": "string",
+                "title": "The Var_type Schema",
+                "default": "",
+                "examples": [
+                  "fusion"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "breakpoint_fp_dna_start": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/breakpoint_fp_dna_start",
+                "type": ["integer", "string"],
+                "title": "The Breakpoint_fp_dna_start Schema",
+                "default": 0,
+                "examples": [
+                  9241790
+                ]
+              },
+              "breakpoint_tp_dna_start": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/breakpoint_tp_dna_start",
+                "type": ["integer", "string"],
+                "title": "The Breakpoint_tp_dna_start Schema",
+                "default": 0,
+                "examples": [
+                  29448320
+                ]
+              },
+              "chromosome_fp": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/chromosome_fp",
+                "type": "string",
+                "title": "The Chromosome_fp Schema",
+                "default": "",
+                "examples": [
+                  "12"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "chromosome_tp": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/chromosome_tp",
+                "type": "string",
+                "title": "The Chromosome_tp Schema",
+                "default": "",
+                "examples": [
+                  "2"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "gene_symbol_fp": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/gene_symbol_fp",
+                "type": "string",
+                "title": "The Gene_symbol_fp Schema",
+                "default": "",
+                "examples": [
+                  "A2M"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "gene_symbol_tp": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/gene_symbol_tp",
+                "type": "string",
+                "title": "The Gene_symbol_tp Schema",
+                "default": "",
+                "examples": [
+                  "ALK"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "transcript_fp": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/transcript_fp",
+                "type": "string",
+                "title": "The Transcript_fp Schema",
+                "default": "",
+                "examples": [
+                  "NM_000014.5"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "transcript_tp": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/transcript_tp",
+                "type": "string",
+                "title": "The Transcript_tp Schema",
+                "default": "",
+                "examples": [
+                  "NM_004304.5"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "genomic_build": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_input/properties/genomic_build",
+                "type": "string",
+                "title": "The Genomic_build Schema",
+                "default": "",
+                "examples": [
+                  "GRCh37"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "varsap_output": {
+            "$id": "#/properties/submitted_variants/items/properties/varsap_output",
+            "type": "object",
+            "title": "The Varsap_output Schema",
+            "required": [
+              "input_validation",
+              "validated_data"
+            ],
+            "properties": {
+              "input_validation": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation",
+                "type": "object",
+                "title": "The Input_validation Schema",
+                "required": [
+                  "valid",
+                  "note",
+                  "error",
+                  "warning"
+                ],
+                "properties": {
+                  "valid": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/valid",
+                    "type": "array",
+                    "title": "The Valid Schema",
+                    "items": {
+                      "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/valid/items",
+                      "type": "string",
+                      "title": "The Items Schema",
+                      "default": "",
+                      "examples": [
+                        "chromosome: 12 and position: 9241790 agree with gene_symbol_fp: A2M Gene ID: 2",
+                        "chromosome: 2 and position: 29448320 agree with gene_symbol_tp: ALK Gene ID: 238"
+                      ],
+                      "pattern": "^(.*)$"
+                    }
+                  },
+                  "note": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/note",
+                    "type": "array",
+                    "title": "The Note Schema",
+                    "items": {
+                      "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/note/items",
+                      "type": "string",
+                      "title": "The Items Schema",
+                      "default": "",
+                      "examples": [
+                        "DNA fusion is in frame",
+                        "used default value molecule: g"
+                      ],
+                      "pattern": "^(.*)$"
+                    }
+                  },
+                  "error": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/error",
+                    "type": "array",
+                    "title": "The Error Schema"
+                  },
+                  "warning": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/input_validation/properties/warning",
+                    "type": "array",
+                    "title": "The Warning Schema"
+                  }
+                }
+              },
+              "validated_data": {
+                "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data",
+                "type": "object",
+                "title": "The Validated_data Schema",
+                "required": [
+                  "var_type",
+                  "fusion_identifier",
+                  "read_depth_fp_dna",
+                  "read_depth_fp_rna",
+                  "read_depth_tp_dna",
+                  "read_depth_tp_rna",
+                  "breakpoint_fp_dna_start",
+                  "breakpoint_tp_dna_start",
+                  "breakpoint_fp_rna_start",
+                  "breakpoint_tp_rna_start",
+                  "breakpoint_fp_dna_end",
+                  "breakpoint_tp_dna_end",
+                  "chromosome_fp",
+                  "chromosome_tp",
+                  "discordant_reads_dna",
+                  "discordant_reads_rna",
+                  "spanning_reads_dna",
+                  "spanning_reads_rna",
+                  "transcript_fp",
+                  "transcript_tp",
+                  "genomic_build",
+                  "frame_shifted_amino_acids_dna",
+                  "frame_shifted_amino_acids_rna",
+                  "gene_fp",
+                  "gene_tp"
+		],
+                "properties": {
+                  "var_type": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/var_type",
+                    "type": "string",
+                    "title": "The Var_type Schema",
+                    "default": "",
+                    "examples": [
+                      "fusion"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "fusion_identifier": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/fusion_identifier",
+                    "type": "null",
+                    "title": "The Fusion_identifier Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "read_depth_fp_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/read_depth_fp_dna",
+                    "type": "null",
+                    "title": "The Read_depth_fp_dna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "read_depth_fp_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/read_depth_fp_rna",
+                    "type": "null",
+                    "title": "The Read_depth_fp_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "read_depth_tp_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/read_depth_tp_dna",
+                    "type": "null",
+                    "title": "The Read_depth_tp_dna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "read_depth_tp_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/read_depth_tp_rna",
+                    "type": "null",
+                    "title": "The Read_depth_tp_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "breakpoint_fp_dna_start": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_fp_dna_start",
+                    "type": "integer",
+                    "title": "The Breakpoint_fp_dna_start Schema",
+                    "default": 0,
+                    "examples": [
+                      9241790
+                    ]
+                  },
+                  "breakpoint_tp_dna_start": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_tp_dna_start",
+                    "type": "integer",
+                    "title": "The Breakpoint_tp_dna_start Schema",
+                    "default": 0,
+                    "examples": [
+                      29448320
+                    ]
+                  },
+                  "breakpoint_fp_rna_start": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_fp_rna_start",
+                    "type": "null",
+                    "title": "The Breakpoint_fp_rna_start Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "breakpoint_tp_rna_start": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_tp_rna_start",
+                    "type": "null",
+                    "title": "The Breakpoint_tp_rna_start Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "breakpoint_fp_dna_end": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_fp_dna_end",
+                    "type": "null",
+                    "title": "The Breakpoint_fp_dna_end Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "breakpoint_tp_dna_end": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_tp_dna_end",
+                    "type": "null",
+                    "title": "The Breakpoint_tp_dna_end Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "chromosome_fp": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/chromosome_fp",
+                    "type": "string",
+                    "title": "The Chromosome_fp Schema",
+                    "default": "",
+                    "examples": [
+                      "12"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "chromosome_tp": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/chromosome_tp",
+                    "type": "string",
+                    "title": "The Chromosome_tp Schema",
+                    "default": "",
+                    "examples": [
+                      "2"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "discordant_reads_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/discordant_reads_dna",
+                    "type": "null",
+                    "title": "The Discordant_reads_dna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "discordant_reads_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/discordant_reads_rna",
+                    "type": "null",
+                    "title": "The Discordant_reads_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "spanning_reads_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/spanning_reads_dna",
+                    "type": "null",
+                    "title": "The Spanning_reads_dna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "spanning_reads_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/spanning_reads_rna",
+                    "type": "null",
+                    "title": "The Spanning_reads_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "transcript_fp": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/transcript_fp",
+                    "type": "string",
+                    "title": "The Transcript_fp Schema",
+                    "default": "",
+                    "examples": [
+                      "NM_000014.5"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "transcript_tp": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/transcript_tp",
+                    "type": "string",
+                    "title": "The Transcript_tp Schema",
+                    "default": "",
+                    "examples": [
+                      "NM_004304.5"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "genomic_build": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/genomic_build",
+                    "type": "string",
+                    "title": "The Genomic_build Schema",
+                    "default": "",
+                    "examples": [
+                      "GRCh37"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "frame_shifted_amino_acids_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/frame_shifted_amino_acids_dna",
+                    "type": ["string", "null"],
+                    "title": "The Frame_shifted_amino_acids_dna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "frame_shifted_amino_acids_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/frame_shifted_amino_acids_rna",
+                    "type": ["string", "null"],
+                    "title": "The Frame_shifted_amino_acids_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "gene_fp": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_fp",
+                    "type": "object",
+                    "title": "The Gene_fp Schema",
+                    "required": [
+                      "gene_id",
+                      "gene_symbol",
+                      "gene_name",
+                      "gene_aliases"
+                    ],
+                    "properties": {
+                      "gene_id": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_fp/properties/gene_id",
+                        "type": "integer",
+                        "title": "The Gene_id Schema",
+                        "default": 0,
+                        "examples": [
+                          2
+                        ]
+                      },
+                      "gene_symbol": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_fp/properties/gene_symbol",
+                        "type": "string",
+                        "title": "The Gene_symbol Schema",
+                        "default": "",
+                        "examples": [
+                          "A2M"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "gene_name": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_fp/properties/gene_name",
+                        "type": "string",
+                        "title": "The Gene_name Schema",
+                        "default": "",
+                        "examples": [
+                          "alpha-2-macroglobulin"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "gene_aliases": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_fp/properties/gene_aliases",
+                        "type": "array",
+                        "title": "The Gene_aliases Schema",
+                        "items": {
+                          "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_fp/properties/gene_aliases/items",
+                          "type": "string",
+                          "title": "The Items Schema",
+                          "default": "",
+                          "examples": [
+                            "A2MD",
+                            "CPAMD5",
+                            "FWP007",
+                            "S863-7"
+                          ],
+                          "pattern": "^(.*)$"
+                        }
+                      }
+                    }
+                  },
+                  "gene_tp": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_tp",
+                    "type": "object",
+                    "title": "The Gene_tp Schema",
+                    "required": [
+                      "gene_id",
+                      "gene_symbol",
+                      "gene_name",
+                      "gene_aliases"
+                    ],
+                    "properties": {
+                      "gene_id": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_tp/properties/gene_id",
+                        "type": "integer",
+                        "title": "The Gene_id Schema",
+                        "default": 0,
+                        "examples": [
+                          238
+                        ]
+                      },
+                      "gene_symbol": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_tp/properties/gene_symbol",
+                        "type": "string",
+                        "title": "The Gene_symbol Schema",
+                        "default": "",
+                        "examples": [
+                          "ALK"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "gene_name": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_tp/properties/gene_name",
+                        "type": "string",
+                        "title": "The Gene_name Schema",
+                        "default": "",
+                        "examples": [
+                          "ALK receptor tyrosine kinase"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "gene_aliases": {
+                        "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_tp/properties/gene_aliases",
+                        "type": "array",
+                        "title": "The Gene_aliases Schema",
+                        "items": {
+                          "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/gene_tp/properties/gene_aliases/items",
+                          "type": "string",
+                          "title": "The Items Schema",
+                          "default": "",
+                          "examples": [
+                            "CD246",
+                            "NBLST3"
+                          ],
+                          "pattern": "^(.*)$"
+                        }
+                      }
+                    }
+                  },
+                  "submitter": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/submitter",
+                    "type": "null",
+                    "title": "The Submitter Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "fp_amino_acids_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/fp_amino_acids_dna",
+                    "type": "string",
+                    "title": "The Fp_amino_acids_dna Schema",
+                    "default": "",
+                    "examples": [
+                      "MGKNKLLHPSLVLLLLVLLPTDASVSGKPQYMVLVPSLLHTETTEKGCVLLSYLNETVTVSASLESVRGNRSLFTDLEAENDVLHCVAFAVPKSSSNEEVMFLTVQVKGPTQEFKKRTTVMVKNEDSLVFVQTDKSIYKPGQTVKFRVVSMDENFHPLNELIPLVYIQDPKGNRIAQWQSFQLEGGLKQFSFPLSSEPFQGSYKVVVQKKSGGRTEHPFTVEEFVLPKFEVQVTVPKIITILEEEMNVSVCGLYTYGKPVPGHVTVSICRKYSDASDCHGEDSQAFCEKFSGQLNSHGCFYQQVKTKVFQLKRKEYEMKLHTEAQIQEEGTVVELTGRQSSEITRTITKLSFVKVDSHFRQGIPFFGQVRLVDGKGVPIPNKVIFIRGNEANYYSNATTDEHGLVQFSINTTNVMGTSLTVRVNYKDRSPCYGYQWVSEEHEEAHHTAYLVFSPSKSFVHLEPMSHELPCGHTQTVQAHYILNGGTLLGLKKLSFYYLIMAKGGIVRTGTHGLLVKQEDMKGHFSISIPVKSDIAPVARLLIYAVLPTGDVIGDSAKYDVENCLANKVDLSFSPSQSLPASHAHLRVTAAPQSVCALRAVDQSVLLMKPDAELSASSVYNLLPEKDLTGFPGPLNDQDNEDCINRHNVYINGITYTPVSSTNEKDMYSFLEDMGLKAFTNSKIRKPKMCPQLQQYEMHGPEGLRVGFYESDVMGRGHARLVHVEEPHTETVRKYFPETWIWDLVVVNSAGVAEVGVTVPDTITEWKAGAFCLSEDAGLGISSTASLRAFQPFFVELTMPYSVIRGEAFTLKATVLNYLPKCIRVSVQLEASPAFLAVPVEKEQAPHCICANGRQTVSWAVTPKSLGNVNFTVSAEALESQELCGTEVPSVPEHGRKDTVIKPLLVEPEGLEKETTFNSLLCPS"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "tp_amino_acids_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/tp_amino_acids_dna",
+                    "type": "string",
+                    "title": "The Tp_amino_acids_dna Schema",
+                    "default": "",
+                    "examples": [
+                      "YRRKHQELQAMQMELQSPEYKLSKLRTSTIMTDYNPNYCFAGKTSSISDLKEVPRKNITLIRGLGHGAFGEVYEGQVSGMPNDPSPLQVAVKTLPEVCSEQDELDFLMEALIISKFNHQNIVRCIGVSLQSLPRFILLELMAGGDLKSFLRETRPRPSQPSSLAMLDLLHVARDIACGCQYLEENHFIHRDIAARNCLLTCPGPGRVAKIGDFGMARDIYRASYYRKGGCAMLPVKWMPPEAFMEGIFTSKTDTWSFGVLLWEIFSLGYMPYPSKSNQEVLEFVTSGGRMDPPKNCPGPVYRIMTQCWQHQPEDRPNFAIILERIEYCTQDPDVINTALPIEYGPLVEEEEKVPVRPKDPEGVPPLLVSQQAKREEERSPAAPPPLPTTSSGKAAKKPTAAEISVRVPRGPAVEGGHVNMAFSQSNPPSELHKVHGSRNKPTSLWNPTYGSWFTEKPTKKNNPIAKKEPHDRGNLGLEGSCTVPPNVATGRLPGASLLLEPSSLTANMKEVPLFRLRHFPCGNVNYGYQQQGLPLEAATAPGAGHYEDTILKSKNSMNQPGP*"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "fp_amino_acids_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/fp_amino_acids_rna",
+                    "type": "null",
+                    "title": "The Fp_amino_acids_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "tp_amino_acids_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/tp_amino_acids_rna",
+                    "type": "null",
+                    "title": "The Tp_amino_acids_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "breakpoint_spanning_amino_acids_dna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_spanning_amino_acids_dna",
+                    "type": "string",
+                    "title": "The Breakpoint_spanning_amino_acids_dna Schema",
+                    "default": "",
+                    "examples": [
+                      "V"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "breakpoint_spanning_amino_acids_rna": {
+                    "$id": "#/properties/submitted_variants/items/properties/varsap_output/properties/validated_data/properties/breakpoint_spanning_amino_acids_rna",
+                    "type": "null",
+                    "title": "The Breakpoint_spanning_amino_acids_rna Schema",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+       }
+      ]
+      }
+    },
+    "submission_processing": {
+      "$id": "#/properties/submission_processing",
+      "type": "object",
+      "title": "The Submission_processing Schema",
+      "required": [
+        "submitted_filename",
+        "generated_filename",
+        "generated_path_filename",
+        "submission_timestamp",
+        "processing_software_version",
+        "processed_date"
+      ],
+      "properties": {
+        "submitted_filename": {
+          "$id": "#/properties/submission_processing/properties/submitted_filename",
+          "type": "string",
+          "title": "The Submitted_filename Schema",
+          "examples": [
+            "data/18049.xlsx"
+          ],
+          "pattern": "^(.*).xlsx$"
+        },
+        "generated_filename": {
+          "$id": "#/properties/submission_processing/properties/generated_filename",
+          "type": "string",
+          "title": "The Generated_filename Schema",
+          "examples": [
+            "18049.json"
+          ],
+          "pattern": "^(.*).json$"
+        },
+        "generated_path_filename": {
+          "$id": "#/properties/submission_processing/properties/generated_path_filename",
+          "type": "string",
+          "title": "The Generated_path_filename Schema",
+          "examples": [
+            "data/18049.json"
+          ],
+          "pattern": "^(.*).json$"
+        },
+        "submission_timestamp": {
+          "$id": "#/properties/submission_processing/properties/submission_timestamp",
+          "type": "string",
+          "title": "The Submission_timestamp Schema",
+          "examples": [
+            "12/20/2019, 16:32:44"
+          ]
+        },
+        "processing_software_version": {
+          "$id": "#/properties/submission_processing/properties/processing_software_version",
+          "type": "string",
+          "title": "The Processing_software_version Schema",
+          "examples": [
+            "v0.01"
+          ]
+        },
+        "processed_date": {
+          "$id": "#/properties/submission_processing/properties/processed_date",
+          "type": "string",
+          "title": "The Processed_date Schema"
+        }
+      }
+    },
+    "errors": {
+      "$id": "#/properties/errors",
+      "type": "object",
+      "title": "The Errors Schema"
+    },
+    "warnings": {
+      "$id": "#/properties/warnings",
+      "type": "object",
+      "title": "The Warnings Schema"
+    },
+    "debug": {
+      "$id": "#/properties/debug",
+      "type": "object",
+      "title": "The Debug Schema",
+      "required": [
+        "dev_version",
+        "dev_date",
+        "processing_software"
+      ],
+      "properties": {
+        "dev_version": {
+          "$id": "#/properties/debug/properties/dev_version",
+          "type": "string",
+          "title": "The Dev_version Schema"
+        },
+        "dev_date": {
+          "$id": "#/properties/debug/properties/dev_date",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The Dev_date Schema",
+          "default": null
+        },
+        "processing_software": {
+          "$id": "#/properties/debug/properties/processing_software",
+          "type": "string",
+          "title": "The Processing_software Schema"
+        }
+      }
+    }
+  }
+}

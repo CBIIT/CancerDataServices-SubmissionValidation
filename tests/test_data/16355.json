@@ -1,0 +1,124 @@
+{
+  "sample_info": {
+    "psn": "16355",
+    "lab": "Yale",
+    "case": "16355",
+    "biopsy_id": null,
+    "biopsy_collection_date": "2017-05-18",
+    "specimen_type": "Tissue",
+    "assay": "IonTorrent",
+    "assay_version": "1"
+  },
+  "submitted_variants": [
+    {
+      "gene": "TP53",
+      "variant_id": "COSM10768",
+      "variant_type": "SNV",
+      "protein_np": "NP_000537.3",
+      "protein_change": "p.His179Tyr",
+      "cdna_nm": "NM_000546.5",
+      "cdna_hgvs": "NM_000546.5:c.535C>T",
+      "genomic_build": "GRCh37",
+      "chromosome": "17",
+      "position_start": 7578395,
+      "position_end": null,
+      "ref": "G",
+      "alt": "A",
+      "allele_frequency": 0.38,
+      "genomic_feature": "missense",
+      "oncominevariantclass": "Hotspot",
+      "varsap_input": {
+        "var_type": "SNV",
+        "gene_symbol": "TP53",
+        "genomic_acc_ver": "NC_000017.11",
+        "position": 7675077,
+        "ref": "G",
+        "alt": "A",
+        "genomic_build": "GRCh38",
+        "output_genomic_build": "GRCh37"
+      },
+      "varsap_output": {
+        "input_validation": {
+          "valid": [
+            "chromosome: 17 and position: 7675077 agree with gene_symbol: TP53 Gene ID: 7157",
+            "genomic_build: GRCh38 agrees with genomic_acc_ver: NC_000017.11",
+            "position: 7675077 is valid for chromosome: 17"
+          ],
+          "note": [
+            "chromosome: 17 derived from genomic_acc_ver",
+            "used default value molecule: g",
+            "used default value output_transcript_acc: PREFERRED_TRANSCRIPT"
+          ],
+          "error": [],
+          "warning": []
+        },
+        "validated_data": {
+          "identifiers": {
+            "COSMIC": [
+              "NotImplemented"
+            ],
+            "CLINVAR": [
+              "NotImplemented"
+            ]
+          },
+          "genomic": {
+            "genomic_hgvs": "NC_000017.10:g.7578395G>A",
+            "genomic_acc_ver": "NC_000017.10",
+            "genomic_var_type": "snv",
+            "genomic_position": 7578395,
+            "genomic_chr": "17",
+            "genomic_ref": "G",
+            "genomic_alt": "A",
+            "output_genomic_build": "GRCh37"
+          },
+          "transcript": [
+            {
+              "transcript_hgvs": "NM_000546.5:c.535C>T",
+              "transcript_acc_ver": "NM_000546.5",
+              "transcript_change": "c.535C>T",
+              "protein": {
+                "protein_hgvs": "NP_000537.3:p.His179Tyr",
+                "protein_acc_ver": "NP_000537.3",
+                "protein_change": "p.His179Tyr"
+              }
+            }
+          ],
+          "allele_frequency": null,
+          "gene": {
+            "gene_id": 7157,
+            "gene_symbol": "TP53",
+            "gene_name": "tumor protein p53",
+            "gene_aliases": [
+              "P53",
+              "BCC7",
+              "LFS1",
+              "BMFS5",
+              "TRP53"
+            ],
+            "hgnc_id": 11998
+          },
+          "annotation": "",
+          "submitter": null
+        }
+      },
+      "genomic_hgvs": "NC_000017.10:g.7578395G>A",
+      "protein_hgvs": "NP_000537.3:p.His179Tyr",
+      "cdna_change": "c.535C>T"
+    }
+  ],
+  "submission_processing": {
+    "submitted_filename": "data/16355.xlsx",
+    "generated_filename": "16355.json",
+    "generated_path_filename": "data/16355.json",
+    "submission_timestamp": "12/20/2019, 16:31:08",
+    "processing_software_version": "v0.01",
+    "processed_date": ""
+  },
+  "errors": {},
+  "warnings": {},
+  "debug": {
+    "dev_version": "0.01",
+    "dev_date": null,
+    "processing_software": ""
+  }
+}
