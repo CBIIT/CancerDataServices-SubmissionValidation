@@ -3,25 +3,10 @@ CDS Template Tool
 =================
 
 
-.. image:: https://img.shields.io/pypi/v/cds_template_tool.svg
-        :target: https://pypi.python.org/pypi/cds_template_tool
-
-.. image:: https://img.shields.io/travis/bensonml/cds_template_tool.svg
-        :target: https://travis-ci.com/bensonml/cds_template_tool
-
-.. image:: https://readthedocs.org/projects/cds-template-tool/badge/?version=latest
-        :target: https://cds-template-tool.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
-
-
-
-
 Tool for working with Cancer Data Service's (CDS) Metadata Template
 
 
 * Free software: MIT license
-* Documentation: https://cds-template-tool.readthedocs.io.
-
 
 =============================
 cds_template_tool
@@ -36,10 +21,6 @@ DESC:
 -------
 `cds_template_tool` will validate submitted metadata manifests
 Will also convert from XLSX to .json and .tsv formats
-
-
-RUNNING:
---------
 
 
 TESTING:
